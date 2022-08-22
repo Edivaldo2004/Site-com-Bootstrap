@@ -1,0 +1,21 @@
+body{
+    background-color:#050A2B;
+}
+.name{
+    color: aqua;
+}
+.email{
+    height: 20px;
+    width: 300px;
+}
+.open{
+color: aqua;
+font-size: 18px;
+}
+#msg{
+    height: 150px;
+    width: 400px;
+}
+.container{
+    margin-left: 25px;
+}
