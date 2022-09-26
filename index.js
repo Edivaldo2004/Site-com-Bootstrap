@@ -3,6 +3,7 @@ const app = express();
 const hbs = require('express-handlebars');
 const PORT = process.env.PORT || 3000;
 const bodyParser = require('body-parser');
+const Usuario = require('./models/Usuario');
 
 //Configuração do HandleBars
 
@@ -35,8 +36,22 @@ app.get('/exibir_users',(req, res) => {
     res.render('exibir_users');
 })
 app.post('/insert_users',(req, res) => {
-    console.log(req.body);
-    res.send("Pegando");
+    var nome = req.body.nome;
+    var email = req.body.email;
+    var senha = req.body.senha;
+    Usuario.create({
+        nome: nome,
+        email: email.toLowerCase(),
+        senha: senha
+    }).then(function(){
+        console.log('Cadatro realizando com sucesso');
+
+        return res.redirect('/exibir_users');
+    }).catch(function(erro){
+        console.log(`ops, deu erro: ${erro}`);
+        res.send("Deu erro");
+
+    })
 })
 // ativar o sistema
 app.listen(PORT,()=>{

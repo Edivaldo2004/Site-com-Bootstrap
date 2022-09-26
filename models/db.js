@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize('bd_loja', 'root', ' ',{
+const sequelize = new Sequelize('bd_loja', 'root', '',{
 host: '127.0.0.1',
 dialect: 'mysql',
 define: {
@@ -15,3 +15,5 @@ sequelize.authenticate().then(function(){
 }).catch(function(err){
     console.log("Falha no banco")
 })
+
+module.exports = {Sequelize, sequelize}
