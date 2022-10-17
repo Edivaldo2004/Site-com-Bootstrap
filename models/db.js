@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize('bd_loja', 'root', '',{
+const sequelize = new Sequelize('db_loja', 'root', '',{
 host: '127.0.0.1',
 dialect: 'mysql',
 define: {
@@ -13,7 +13,7 @@ logging: false
 sequelize.authenticate().then(function(){
     console.log("Conectado ao banco");
 }).catch(function(err){
-    console.log("Falha no banco")
+    console.log(`Falha no banco ${err}`)
 })
 
 module.exports = {Sequelize, sequelize}

@@ -32,9 +32,19 @@ app.get('/editar_users',(req, res) => {
 })
 
 // rota renderizada
-app.get('/exibir_users',(req, res) => {
-    res.render('exibir_users');
+app.get("/exibir_users", (req, res) => {
+    Usuario.findAll().then((valores)=>{
+    if(valores.length>0) {
+     return res.render('exibir_users', {NavActiveUsers:true, table:true, 
+    usuarios:valores.map(valores => valores.toJSON())});
+    } else{
+    res.render('exibir_users', {NavActiveUsers:true, table:true});
+    }
+    }).catch((err)=>{
+        console.log(`Houve um problema: ${err}`);
+    })
 })
+
 app.post('/insert_users',(req, res) => {
     var nome = req.body.nome;
     var email = req.body.email;
