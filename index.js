@@ -30,7 +30,15 @@ app.get('/cad_users',(req, res) => {
 app.get('/editar_users',(req, res) => {
     res.render('editar_users');
 })
-
+ app.post('/editar_users', (req, res) =>{
+    var id = req.body.id;
+    Usuario.findByPk(id).then((dado) =>{
+        return res.render('editar_users', {error:false, id: dado.id, nome:dado.nome, email:dado.email, senha: dado.senha});
+    }).catch((err) => {
+        console.log(err)
+        return res.render('editar_users', {error:true, problema: "Não é possivel editar este registro"});
+    })
+})
 // rota renderizada
 app.get("/exibir_users", (req, res) => {
     Usuario.findAll().then((valores)=>{
@@ -44,7 +52,25 @@ app.get("/exibir_users", (req, res) => {
         console.log(`Houve um problema: ${err}`);
     })
 })
+app.post("/update_users", (req, res) => {
+    var nome = req.body.nome;
+    var email = req.body.email;
+    var senha = req.body.senha;
 
+    Usuario.update({
+        nome: nome,
+        email: email.toLowerCase(),
+        senha: senha,
+    }, 
+    { where: {
+     id: req.body.id }
+    }).then((resultado) => {
+    console.log(resultado);
+    return res.redirect('/exibir_users');
+    }).catch((er) => {
+        console.log(err);
+    })
+})
 app.post('/insert_users',(req, res) => {
     var nome = req.body.nome;
     var email = req.body.email;

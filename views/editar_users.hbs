@@ -1,1 +1,16 @@
-<h1>Pegando editar</h1>
+<form action="/update_users" method="post">
+<input type="hidden" name="id" value="{{id}}"/>
+ <div class="mb-3">
+        <label  for="exampleFormControlInput1" class="form-label">Nome:</label>
+        <input value="{{nome}}" type="name" name="nome" class="form-control" id="exampleFormControlInput1" placeholder="Nome">
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Email:</label>
+        <input value="{{email}}" type="email" name="email" class="form-control" id="exampleFormControlInput1" placeholder="Email"> 
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Senha:</label>
+        <input value="{{senha}}" type="text" name="senha" class="form-control"   placeholder="Senha"> 
+      </div>
+ <button type="submit">Enviar</button>
+</form>
