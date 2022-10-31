@@ -89,10 +89,18 @@ app.post('/insert_users',(req, res) => {
 
     })
 })
+app.post("/excluir_users", (req, res)=>{
+    Usuario.destroy({
+    where:{
+    id: req.body.id
+    }
+}).then((retorno) => {
+    return res.redirect('exibir_users');
+}).catch((err)=> {
+    console.log(err);
+});
+})
 // ativar o sistema
 app.listen(PORT,()=>{
     console.log('Servidor rodando em http:localhost:' + PORT);
 })
- 
-
-

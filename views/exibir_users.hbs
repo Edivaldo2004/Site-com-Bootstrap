@@ -29,10 +29,12 @@
                   </form>
                 </div>
                 <div class='col-6 col-md-3'>
-                  <a
-                    href='#'
+                  <form action="/excluir_users" method="post">
+                  <input type="hidden" name="id" value="{{id}}">
+                  <button
                     class='w-100 btn btn-danger'
-                  >Deletar</a>
+                  >Deletar</button>
+                  </form>
                 </div>
               </div>
             </td>
