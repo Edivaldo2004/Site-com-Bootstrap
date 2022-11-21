@@ -1,0 +1,54 @@
+<div class='p-5 rounded mt-3'>
+  <h1>Listar Produtos</h1>
+  {{#if table}}
+    <table class='table table-striped'>
+      <thead>
+        <tr>
+          <th scope='col'>#ID</th>
+          <th scope='col'>Nome</th>
+          <th scope='col'>Imagem</th>
+          <th scope='col'>Preço</th>
+          <th scope='col'>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each produtos}}
+          <tr>
+            <th scope='row'>{{id}}</th>
+            <td>{{nome}}</td>
+            <td><img width="80px"  src='{{marca}}' /></td>
+             <td>{{preco}}</td>
+            <td>
+
+              <div class='row g-1'>
+                <div class='col-6 col-md-3'>
+                  <form action="editar_prod" method="post">
+                    <input type="hidden" name="id" value="{{id}}"/>
+                  <button
+                    class='w-100 btn btn-info'
+                  >
+                  Editar</button>
+                  </form>
+                </div>
+                <div class='col-6 col-md-3'>
+                  <form action="/excluir_prod" method="post">
+                  <input type="hidden" name="id" value="{{id}}">
+                  <button
+                    class='w-100 btn btn-danger'
+                  >Deletar</button>
+                  </form>
+                </div>
+              </div>
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  {{else}}
+    <div class='card mt-4'>
+      <div class='card-body'>
+        Nenhum dado encontrado
+      </div>
+    </div>
+  {{/if}}
+</div>

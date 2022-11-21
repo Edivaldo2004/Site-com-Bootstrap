@@ -1,0 +1,16 @@
+<form action="/update_prod" method="post">
+<input type="hidden" name="id" value="{{id}}"/>
+ <div class="mb-3">
+        <label  for="exampleFormControlInput1" class="form-label">Nome:</label>
+        <input value="{{nome}}" type="name" name="nome" class="form-control" id="exampleFormControlInput1" placeholder="Nome">
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Imagem:</label>
+        <input value="{{marca}}" type="url" name="imagem" class="form-control" id="exampleFormControlInput1" placeholder="Imagem"> 
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Preco:</label>
+        <input value="{{preco}}" type="int" name="preco" class="form-control"   placeholder="Preco"> 
+      </div>
+ <button type="submit">Enviar</button>
+</form>
